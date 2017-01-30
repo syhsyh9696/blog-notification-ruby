@@ -3,6 +3,7 @@ It's a telegram bot.
 
 # Requirements
 Ruby 2.3.0 # Rvm is best
+
 Gem Requirements
 ```bash
 gem install ghee

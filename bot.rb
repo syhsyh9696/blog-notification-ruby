@@ -47,6 +47,15 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
         end
     end
 
-    receive_thread.join
-    send_thread.join
+    begin
+        receive_thread.join
+    rescue
+        retry
+    end
+
+    begin
+        send_thread.join
+    rescue
+        retry
+    end
 end
