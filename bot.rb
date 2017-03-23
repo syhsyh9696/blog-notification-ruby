@@ -8,7 +8,7 @@ require 'pp'
 require_relative 'module'
 
 TOKEN = "298625375:AAG51PT_LTCGbsZdiAqdFIJcPRbtPyNZ1xw"
-gh = Ghee.basic_auth("???", "???")
+gh = Ghee.basic_auth("????", "????")
 
 $updatetime = Hash.new
 $updatetime = Unicorn::get_time(gh)

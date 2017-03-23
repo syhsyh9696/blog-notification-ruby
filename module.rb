@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 module Unicorn
-    version = "1.0"
+    version = "1.3"
 
     def get_time(authentication)
         updatetime = Hash.new
