@@ -9,8 +9,9 @@ require_relative 'module'
 
 TOKEN = "298625375:AAG51PT_LTCGbsZdiAqdFIJcPRbtPyNZ1xw"
 gh = Ghee.basic_auth("???", "???")
-updatetime = Hash.new
-Unicorn::get_time(updatetime, gh)
+
+$updatetime = Hash.new
+$updatetime = Unicorn::get_time(gh)
 
 Telegram::Bot::Client.run(TOKEN) do |bot|
     receive_thread = Thread.new do
@@ -34,12 +35,12 @@ Telegram::Bot::Client.run(TOKEN) do |bot|
         while true
             sleep 120
             begin
-                str = Unicorn::check(updatetime, gh)
+                str = Unicorn::check($updatetime, gh)
                 if (str.size != 0)
                     Unicorn::user_list.each do |user|
                         bot.api.send_message(chat_id: user.to_i, text: "#{str}")
                     end
-                    Unicorn::get_time(updatetime, gh)
+                    $updatetime = Unicorn::get_time(gh)
                 end
             rescue
                 next

@@ -3,13 +3,15 @@
 module Unicorn
     version = "1.0"
 
-    def get_time(updatetime, authentication)
+    def get_time(authentication)
+        updatetime = Hash.new
         File.open("allblog.ini", "r") do |io|
             while line = io.gets
                 line.chomp!
                 updatetime[line] = Time.parse(pushed_at(line, authentication).to_s.gsub!(/T/, " ").gsub!(/Z/, ""))
             end
         end
+        return updatetime
     end
 
     def pushed_at(user, authentication)
@@ -20,7 +22,7 @@ module Unicorn
         newupdatetime = Hash.new
         str = String.new
 
-        get_time(newupdatetime, authentication)
+        newupdatetime = get_time(authentication)
         return str if(updatetime == newupdatetime)
 
         updatetime.each do |key, value|
