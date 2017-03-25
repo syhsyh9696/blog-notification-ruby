@@ -4,8 +4,8 @@ require 'telegram/bot'
 require 'ghee'
 require 'time'
 
-require_relative 'module'
-require_relative 'update'
+require_relative './lib/module.rb'
+require_relative './lib/update.rb'
 
 TOKEN = "298625375:AAG51PT_LTCGbsZdiAqdFIJcPRbtPyNZ1xw"
 

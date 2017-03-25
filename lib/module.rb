@@ -5,7 +5,7 @@ module Unicorn
 
     def get_time(authentication)
         updatetime = Hash.new
-        File.open("allblog.ini", "r") do |io|
+        File.open("../resources/allblog.ini", "r") do |io|
             while line = io.gets
                 line.chomp!
                 updatetime[line] = Time.parse(pushed_at(line, authentication).to_s.gsub!(/T/, " ").gsub!(/Z/, ""))
@@ -20,7 +20,7 @@ module Unicorn
 
     def user_list
         user = Array.new
-        File.open("chat_id.ini", "r") do |io|
+        File.open("../resources/chat_id.ini", "r") do |io|
             while line = io.gets
                 line.chomp!
                 user << line
@@ -38,7 +38,7 @@ module Unicorn
         end
 
         if (flagbit)
-            io_temp = File.open("chat_id.ini", "a")
+            io_temp = File.open("../resources/chat_id.ini", "a")
             io_temp << chat_id << "\n"
             io_temp.close
         end
